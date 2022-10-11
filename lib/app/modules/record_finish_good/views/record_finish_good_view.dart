@@ -43,6 +43,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                         FocusNode focusNode,
                         VoidCallback onFieldSubmitted) {
                       return TextFormField(
+                        keyboardType: TextInputType.text,
                         // autofocus: true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -168,6 +169,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                               keyboardType: TextInputType.text,
                               controller: controller.jam_mulai,
                               decoration: const InputDecoration(
+                                  hintText: ('Jam Mulai'),
                                   disabledBorder:
                                   UnderlineInputBorder(borderSide: BorderSide
                                       .none),
@@ -203,11 +205,13 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                               keyboardType: TextInputType.text,
                               controller: controller.jam_berakhir,
                               decoration: const InputDecoration(
+                                  hintText: ('Jam Berakhir'),
                                   disabledBorder:
                                   UnderlineInputBorder(borderSide: BorderSide
                                       .none),
                                   // labelText: 'Time',
-                                  contentPadding: EdgeInsets.only(top: 0.0)),
+                                  contentPadding: EdgeInsets.only(top: 0.0)
+                              ),
                             ),
                           ),
                         ),
@@ -234,6 +238,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                         FocusNode focusNode,
                         VoidCallback onFieldSubmitted) {
                       return TextFormField(
+                        keyboardType: TextInputType.text,
                         // autofocus: true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -258,6 +263,11 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                         textInputAction: TextInputAction.next,
                         onFieldSubmitted: (String selection) {
                           onFieldSubmitted();
+                          if (texteditingcontroller.text.contains(";")){
+                            List<String> a = texteditingcontroller.text.split(";");
+                            controller.partnumberC.text = a[3];
+                            controller.lotnumberC.text = a.last;
+                          }
                         },
                       );
                     },
@@ -314,7 +324,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                         FocusNode focusNode,
                         VoidCallback onFieldSubmitted) {
                       return TextFormField(
-                        // autofocus: true,
+                        keyboardType: TextInputType.text,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Form ini wajib diisi';
@@ -383,7 +393,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       child: Padding(
                         padding: const EdgeInsets.only(right: 8.0),
                         child: TextFormField(
-                          // autofocus: true,
+                          keyboardType: TextInputType.text,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Form ini wajib diisi';
@@ -412,7 +422,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 2.0, right: 2.0),
                         child: TextFormField(
-                          // autofocus: true,
+                          keyboardType: TextInputType.text,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Form ini wajib diisi';
@@ -441,7 +451,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 8.0),
                         child: TextFormField(
-                          // autofocus: true,
+                          keyboardType: TextInputType.text,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Form ini wajib diisi';
@@ -482,7 +492,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 2.0, right: 2.0),
                         child: TextFormField(
-                          // autofocus: true,
+                          keyboardType: TextInputType.text,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Form ini wajib diisi';
@@ -490,7 +500,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                             return null;
                           },
                           decoration: const InputDecoration(
-                            hintText: "Scratch/Spiral",
+                            hintText: "Scratch",
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   width: 3, color: Colors.black),
@@ -511,7 +521,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 2.0, right: 2.0),
                         child: TextFormField(
-                          // autofocus: true,
+                          keyboardType: TextInputType.text,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Form ini wajib diisi';
@@ -540,7 +550,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 2.0, right: 2.0),
                         child: TextFormField(
-                          // autofocus: true,
+                          keyboardType: TextInputType.text,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Form ini wajib diisi';
@@ -573,7 +583,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 2.0, right: 2.0),
                         child: TextFormField(
-                          // autofocus: true,
+                          keyboardType: TextInputType.text,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Form ini wajib diisi';
@@ -602,7 +612,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 2.0, right: 2.0),
                         child: TextFormField(
-                          // autofocus: true,
+                          keyboardType: TextInputType.text,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Form ini wajib diisi';
@@ -610,7 +620,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                             return null;
                           },
                           decoration: const InputDecoration(
-                            hintText: "CG/Spiral",
+                            hintText: "CG",
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   width: 3, color: Colors.black),
@@ -631,7 +641,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 2.0, right: 2.0),
                         child: TextFormField(
-                          // autofocus: true,
+                          keyboardType: TextInputType.text,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Form ini wajib diisi';
@@ -664,7 +674,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 2.0, right: 2.0),
                         child: TextFormField(
-                          // autofocus: true,
+                          keyboardType: TextInputType.text,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Form ini wajib diisi';
@@ -688,12 +698,42 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                         ),
                       ),
                     ),
+
                     Expanded(
                       flex: 1,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 2.0, right: 2.0),
                         child: TextFormField(
-                          // autofocus: true,
+                          keyboardType: TextInputType.text,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Form ini wajib diisi';
+                            }
+                            return null;
+                          },
+                          decoration: const InputDecoration(
+                            hintText: "Spiral",
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 3, color: Colors.black),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 3, color: Colors.black), //<-- SEE HERE
+                            ),
+                            // labelText: ''
+                          ),
+                          // controller: texteditingcontroller,
+                          textInputAction: TextInputAction.next,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
+                        child: TextFormField(
+                          keyboardType: TextInputType.text,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Form ini wajib diisi';
@@ -726,7 +766,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 2.0, right: 2.0),
                         child: TextFormField(
-                          // autofocus: true,
+                          keyboardType: TextInputType.text,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Form ini wajib diisi';
@@ -755,7 +795,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 2.0, right: 2.0),
                         child: TextFormField(
-                          // autofocus: true,
+                          keyboardType: TextInputType.text,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Form ini wajib diisi';
@@ -783,7 +823,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                 ),
                 SizedBox(height: 15),
 
-                Text("REJECT NIHON SEIKI", style: GoogleFonts.roboto(
+                Text("REJECT MATERIAL", style: GoogleFonts.roboto(
                     fontSize: 20, fontWeight: FontWeight.bold)),
 
                 SizedBox(height: 15),
@@ -795,7 +835,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 2.0, right: 2.0),
                         child: TextFormField(
-                          // autofocus: true,
+                          keyboardType: TextInputType.text,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Form ini wajib diisi';
@@ -824,7 +864,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 2.0, right: 2.0),
                         child: TextFormField(
-                          // autofocus: true,
+                          keyboardType: TextInputType.text,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Form ini wajib diisi';
@@ -832,7 +872,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                             return null;
                           },
                           decoration: const InputDecoration(
-                            hintText: "Banding",
+                            hintText: "Bending",
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   width: 3, color: Colors.black),
@@ -849,6 +889,110 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       ),
                     ),
                   ],
+                ),
+
+                SizedBox(height: 15),
+
+                Text("REJECT PLATING", style: GoogleFonts.roboto(
+                    fontSize: 20, fontWeight: FontWeight.bold)),
+
+                SizedBox(height: 15),
+
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
+                        child: TextFormField(
+                          keyboardType: TextInputType.text,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Form ini wajib diisi';
+                            }
+                            return null;
+                          },
+                          decoration: const InputDecoration(
+                            hintText: "Rusty",
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 3, color: Colors.black),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 3, color: Colors.black), //<-- SEE HERE
+                            ),
+                            // labelText: ''
+                          ),
+                          // controller: texteditingcontroller,
+                          textInputAction: TextInputAction.next,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
+                        child: TextFormField(
+                          keyboardType: TextInputType.text,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Form ini wajib diisi';
+                            }
+                            return null;
+                          },
+                          decoration: const InputDecoration(
+                            hintText: "Color",
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 3, color: Colors.black),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 3, color: Colors.black), //<-- SEE HERE
+                            ),
+                            // labelText: ''
+                          ),
+                          // controller: texteditingcontroller,
+                          textInputAction: TextInputAction.next,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: 15),
+
+                Text("REMARK", style: GoogleFonts.roboto(
+                    fontSize: 20, fontWeight: FontWeight.bold)),
+
+                SizedBox(height: 15),
+
+                Padding(
+                  padding: const EdgeInsets.only(left: 2.0, right: 2.0),
+                  child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Form ini wajib diisi';
+                      }
+                      return null;
+                    },
+                    decoration: const InputDecoration(
+                      hintText: "Keterangan",
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 3, color: Colors.black),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 3, color: Colors.black), //<-- SEE HERE
+                      ),
+                      // labelText: ''
+                    ),
+                    // controller: texteditingcontroller,
+                    textInputAction: TextInputAction.next,
+                  ),
                 ),
               ],
             ),

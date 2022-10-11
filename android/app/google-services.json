@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "630622279871",
+    "project_id": "nsi-qc",
+    "storage_bucket": "nsi-qc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630622279871:android:262cabdd9cda6360a14e0a",
+        "android_client_info": {
+          "package_name": "com.nsi.qc_nis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630622279871-m2n0pi6q6s9d7tj61bptkmr2nsflc0ch.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJAQR2eF4njXero5iqexwvO-sBCfrVqgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "630622279871-m2n0pi6q6s9d7tj61bptkmr2nsflc0ch.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

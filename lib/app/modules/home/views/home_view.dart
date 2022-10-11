@@ -10,6 +10,10 @@ class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+
+    var width = MediaQuery.of(context).size.width* 0.38;
+    var  height =  MediaQuery.of(context).size.width* 0.2;
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -25,9 +29,9 @@ class HomeView extends GetView<HomeController> {
             children: [
               GestureDetector(
                 onTap: ()=>Get.toNamed(Routes.RECORD_FINISH_GOOD),
-                child: const SizedBox(
-                  width: 180.0,
-                  height: 100.0,
+                child: SizedBox(
+                  width: width,
+                  height: height,
                   child: Card(
                     color: colorPrimary,
                     child: Center(
@@ -44,28 +48,9 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
               GestureDetector(
-                child: const SizedBox(
-                  width: 180.0,
-                  height: 100.0,
-                  child: Card(
-                    color: colorPrimary,
-                    child: Center(
-                      child: Text(
-                        'Record OQC Finish Good',
-                        style: TextStyle(
-                          color: colorPrimaryText,
-                          fontSize: 20,
-                        ),
-                        textAlign: TextAlign.center,
-                      ), //Text
-                    ), //Center
-                  ), //Card
-                ),
-              ),
-              GestureDetector(
-                child: const SizedBox(
-                  width: 180.0,
-                  height: 100.0,
+                child: SizedBox(
+                  width: width,
+                  height: height,
                   child: Card(
                     color: colorPrimary,
                     child: Center(
@@ -88,9 +73,9 @@ class HomeView extends GetView<HomeController> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               GestureDetector(
-                child: const SizedBox(
-                  width: 180.0,
-                  height: 100.0,
+                child: SizedBox(
+                  width: width,
+                  height: height,
                   child: Card(
                     color: colorPrimary,
                     child: Center(
@@ -107,28 +92,9 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
               GestureDetector(
-                child: const SizedBox(
-                  width: 180.0,
-                  height: 100.0,
-                  child: Card(
-                    color: colorPrimary,
-                    child: Center(
-                      child: Text(
-                        'Record OQC Finish Good',
-                        style: TextStyle(
-                          color: colorPrimaryText,
-                          fontSize: 20,
-                        ),
-                        textAlign: TextAlign.center,
-                      ), //Text
-                    ), //Center
-                  ), //Card
-                ),
-              ),
-              GestureDetector(
-                child: const SizedBox(
-                  width: 180.0,
-                  height: 100.0,
+                child: SizedBox(
+                  width: width,
+                  height: height,
                   child: Card(
                     color: colorPrimary,
                     child: Center(

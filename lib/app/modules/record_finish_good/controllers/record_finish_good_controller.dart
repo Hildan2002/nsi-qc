@@ -161,7 +161,7 @@ class RecordFinishGoodController extends GetxController {
     if(pickedTime == null){
       return "";
     }
-    selectedTime.value = pickedTime!;
+    selectedTime.value = pickedTime;
     return "${pickedTime.hour.toString().padLeft(2, '0')}.${pickedTime.minute.toString().padLeft(2, '0')}";
   }
 }
