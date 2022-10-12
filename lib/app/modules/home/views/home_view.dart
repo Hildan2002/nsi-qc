@@ -32,7 +32,7 @@ class HomeView extends GetView<HomeController> {
                 child: SizedBox(
                   width: width,
                   height: height,
-                  child: Card(
+                  child: const Card(
                     color: colorPrimary,
                     child: Center(
                       child: Text(
@@ -51,7 +51,7 @@ class HomeView extends GetView<HomeController> {
                 child: SizedBox(
                   width: width,
                   height: height,
-                  child: Card(
+                  child: const Card(
                     color: colorPrimary,
                     child: Center(
                       child: Text(
@@ -68,7 +68,7 @@ class HomeView extends GetView<HomeController> {
               ),
             ],
           ),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -76,7 +76,7 @@ class HomeView extends GetView<HomeController> {
                 child: SizedBox(
                   width: width,
                   height: height,
-                  child: Card(
+                  child: const Card(
                     color: colorPrimary,
                     child: Center(
                       child: Text(
@@ -95,7 +95,7 @@ class HomeView extends GetView<HomeController> {
                 child: SizedBox(
                   width: width,
                   height: height,
-                  child: Card(
+                  child: const Card(
                     color: colorPrimary,
                     child: Center(
                       child: Text(
