@@ -9,94 +9,6 @@ class RecordFinishGoodController extends GetxController {
   final formKey = GlobalKey<FormState>();
   final pic = TextEditingController();
 
-  List<String> listNama  = [
-    "Ambar Afriyani",
-    "Ana Febrina",
-    "Arif Rahman",
-    "Audia Awali",
-    "Ayu Ratna Ningsih",
-    "Azuardi",
-    "Basyarani Ursha",
-    "Binah",
-    "Bovi Ferdiansa",
-    "Diyan Supriyadi",
-    "Endang Trimurtini",
-    "Erna Diana Astuti",
-    "Ery Safitri",
-    "Etik Lestari",
-    "Fauziarti",
-    "Fika Dian Pratami",
-    "Fitri Rahmawati",
-    "Ikhda Fitrotunnisa",
-    "Irma Ayu Santika",
-    "Jesi Nur Rochmawati",
-    "Junita",
-    "Justiawan Indra Atmaja",
-    "Kokok Susilo",
-    "Lia Yunita",
-    "Lilis Handayani",
-    "Mad Saefurohman",
-    "Malahayati",
-    "Mayasari",
-    "Muki",
-    "Muslimatun",
-    "Nanditha Shendi Thriziska",
-    "Novan Wicaksono",
-    "Novi Dwi Santoso",
-    "Novi Sari Handayani",
-    "Novi Utami",
-    "Novia Tri Handayani",
-    "Nurhidayatul Laili",
-    "Nuril Amelia",
-    "Nurul Alfiyani",
-    "Nurul Komariyah",
-    "Nuswantari",
-    "Oktivianne Nurertha K",
-    "Puji Rahayu",
-    "Rani Riswanti",
-    "Rifani Madjid",
-    "Rikha Susanti",
-    "Rinna Untari",
-    "Riyana",
-    "Rizka Novining Dias",
-    "Romasti Naomi Hutauruk",
-    "Rosimah",
-    "Rosinih",
-    "Rully Hendriyanto",
-    "Siti Aliyah",
-    "Siti Aulia Yulistia",
-    "Siti Jamangatun",
-    "Siti Kartini",
-    "Siti Rifa'atul H",
-    "Soleh Ibnu",
-    "Sri Sulastri",
-    "Susi Listiani",
-    "Suyatno Surtana",
-    "Tri Kuati",
-    "Tutut Rizki Pramudita",
-    "Uki Indra Perwitasari",
-    "Wahyu Deriana",
-    "Wahyu Setiadi",
-    "Weni Rezeki",
-    "Wiji Lestari",
-    "Yana Suryana",
-    "Yohanes Alferdo Oktama",
-    "Yustina Widhianti"
-  ];
-
-  List<String> listPartnumber = [
-    '1466273-00-A01',
-    '1477428-00-A01',
-    '1477429-00-A01',
-    '168856-00-A01',
-    '1705171-01-A01'];
-
-  List<String> listLotnumber = [
-    '22810N077200',
-    '22810N078200',
-    '22810N080200',
-  ];
-
   var selectedTime = TimeOfDay.now().obs;
 
   var f1 = FocusNode();
@@ -129,7 +41,9 @@ class RecordFinishGoodController extends GetxController {
  late TextEditingController keteranganC;
  late TextEditingController namaPICC;
  String? shift;
-var idtanggal = DateFormat("yyyyMMdd").format(DateTime.now());
+ Map<String, TextEditingController> mapTextEditingController = {};
+
+var idtanggal = DateFormat("yyyy-MM-dd").format(DateTime.now());
 
   CollectionReference koleksi = FirebaseFirestore.instance.collection("Finish Good");
 
@@ -158,7 +72,7 @@ var idtanggal = DateFormat("yyyyMMdd").format(DateTime.now());
        ngnsShortcut: ngns_shortcutC.text,
        ngnsBurry: ngns_burryC.text,
        ngnsMproses: ngns_mprosesC.text,
-       ngnsMprosesKet: ngns_mproses_ketC.text,
+       // ngnsMprosesKet: ngns_mproses_ketC.text,
        ngmPinhole: ngm_pinholeC.text,
        ngmBending: ngm_bendingC.text,
        ngmRusty: ngm_rustyC.text,
@@ -255,6 +169,22 @@ var idtanggal = DateFormat("yyyyMMdd").format(DateTime.now());
     ngm_colourC = TextEditingController();
     keteranganC = TextEditingController();
     namaPICC = TextEditingController();
+
+    mapTextEditingController["Scratch"] = ngns_scratchC;
+    mapTextEditingController["Dented"] = ngns_dentedC;
+    mapTextEditingController["Dimens"] = ngns_dimensC;
+    mapTextEditingController["Pin G"] = ngns_pin_gC;
+    mapTextEditingController["CG"] = ngns_cgC;
+    mapTextEditingController["Piptil"] = ngns_piptilC;
+    mapTextEditingController["Chip"] = ngns_chipC;
+    mapTextEditingController["Spiral"] = ngns_spiralC;
+    mapTextEditingController["Shortcut"] = ngns_shortcutC;
+    mapTextEditingController["Burry"] = ngns_burryC;
+    mapTextEditingController["M Proses"] = ngns_mprosesC;
+    mapTextEditingController["Pin Hole"] = ngm_pinholeC;
+    mapTextEditingController["Bending"] = ngm_bendingC;
+    mapTextEditingController["Rusty"] = ngm_rustyC;
+    mapTextEditingController["Color"] = ngm_colourC;
     super.onInit();
   }
 
@@ -319,5 +249,35 @@ var idtanggal = DateFormat("yyyyMMdd").format(DateTime.now());
     ngm_colourC.text =  "";
     keteranganC.text =  "";
     namaPICC.text =  "";
+  }
+
+  void cekInputDanSubmit() {
+    try {
+      var totalNG = 0;
+      mapTextEditingController.forEach((key, value) {
+        if (value.text.isNotEmpty) {
+          if (value.text.contains(",")) {
+            totalNG = totalNG + int.parse(value.text.split(",")[0]);
+          }
+          else {
+            if (value.text.contains(" ")){
+              Get.snackbar("Error", "Periksa lagi inputannya");
+              return;
+            }
+            else {
+              totalNG = totalNG + int.parse(value.text);
+            }
+          }
+        }
+      });
+      if (totalNG == int.parse(qty_ngC.text)){
+        addFinishGood();
+      } else {
+        Get.snackbar("Salah Itung woi", "Gak teliti SP");
+      }
+    } on Exception catch (e) {
+      print("Error nih: $e");
+      Get.snackbar("Error", "Heran");
+    }
   }
 }

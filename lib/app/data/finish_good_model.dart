@@ -56,7 +56,7 @@ class DetailFinish {
     this.ngnsShortcut,
     this.ngnsBurry,
     this.ngnsMproses,
-    this.ngnsMprosesKet,
+    // this.ngnsMprosesKet,
     this.ngmPinhole,
     this.ngmBending,
     this.ngmRusty,
@@ -82,7 +82,7 @@ class DetailFinish {
   String? ngnsShortcut;
   String? ngnsBurry;
   String? ngnsMproses;
-  String? ngnsMprosesKet;
+  // String? ngnsMprosesKet;
   String? ngmPinhole;
   String? ngmBending;
   String? ngmRusty;
@@ -108,7 +108,7 @@ class DetailFinish {
     ngnsShortcut: json["ngns_shortcut"],
     ngnsBurry: json["ngns_burry"],
     ngnsMproses: json["ngns_mproses"],
-    ngnsMprosesKet: json["ngns_mproses_ket"],
+    // ngnsMprosesKet: json["ngns_mproses_ket"],
     ngmPinhole: json["ngm_pinhole"],
     ngmBending: json["ngm_bending"],
     ngmRusty: json["ngm_rusty"],
@@ -135,7 +135,7 @@ class DetailFinish {
     "ngns_shortcut": ngnsShortcut,
     "ngns_burry": ngnsBurry,
     "ngns_mproses": ngnsMproses,
-    "ngns_mproses_ket": ngnsMprosesKet,
+    // "ngns_mproses_ket": ngnsMprosesKet,
     "ngm_pinhole": ngmPinhole,
     "ngm_bending": ngmBending,
     "ngm_rusty": ngmRusty,

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qc_nis/app/constant/constant.dart';
 
+import '../../../constant/wijet.dart';
 import '../controllers/record_finish_good_controller.dart';
 
 class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
@@ -32,7 +33,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       if (textEditingValue.text == '') {
                         return const Iterable<String>.empty();
                       }
-                      return controller.listNama.where((String option) {
+                      return listNama.where((String option) {
                         return option.toLowerCase().contains(
                             textEditingValue.text.toLowerCase());
                       });
@@ -224,7 +225,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       if (textEditingValue.text == '') {
                         return const Iterable<String>.empty();
                       }
-                      return controller.listPartnumber.where((String option) {
+                      return listPartnumber.where((String option) {
                         return option.toLowerCase().startsWith(
                             textEditingValue.text.toLowerCase());
                       });
@@ -308,7 +309,7 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                       if (textEditingValue.text == '') {
                         return const Iterable<String>.empty();
                       }
-                      return controller.listLotnumber.where((String option) {
+                      return listLotnumber.where((String option) {
                         return option.toLowerCase().startsWith(
                             textEditingValue.text.toLowerCase());
                       });
@@ -478,279 +479,32 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
 
                 Row(
                   children: [
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
-                        child: TextFormField(
-                          controller: controller.ngns_scratchC,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: "Scratch",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black), //<-- SEE HERE
-                            ),
-                          ),
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
-                        child: TextFormField(
-                          controller: controller.ngns_dentedC,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: "Dented",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black), //<-- SEE HERE
-                            ),
-                          ),
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
-                        child: TextFormField(
-                          controller: controller.ngns_dimensC,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: "Dimens",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black), //<-- SEE HERE
-                            ),
-                          ),
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                    ),
+                    buatTextFormField("Scratch", controller.mapTextEditingController),
+                    buatTextFormField("Dented", controller.mapTextEditingController),
+                    buatTextFormField("Dimens", controller.mapTextEditingController),
                   ],
                 ),
                 Row(
                   children: [
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
-                        child: TextFormField(
-                          controller: controller.ngns_pin_gC,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: "Pin G",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black), //<-- SEE HERE
-                            ),
-                          ),
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
-                        child: TextFormField(
-                          controller: controller.ngns_cgC,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: "CG",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black), //<-- SEE HERE
-                            ),
-                          ),
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
-                        child: TextFormField(
-                          controller: controller.ngns_piptilC,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: "Piptil",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black), //<-- SEE HERE
-                            ),
-                          ),
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                    ),
+                    buatTextFormField("Pin G", controller.mapTextEditingController),
+                    buatTextFormField("CG", controller.mapTextEditingController),
+                    buatTextFormField("Piptil", controller.mapTextEditingController),
                   ],
                 ),
                 Row(
                   children: [
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
-                        child: TextFormField(
-                          controller: controller.ngns_chipC,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: "Chip",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black), //<-- SEE HERE
-                            ),
-                          ),
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
-                        child: TextFormField(
-                          controller: controller.ngns_spiralC,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: "Spiral",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black), //<-- SEE HERE
-                            ),
-                          ),
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
-                        child: TextFormField(
-                          controller: controller.ngns_shortcutC,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: "ShortCut",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black), //<-- SEE HERE
-                            ),
-                          ),
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                    ),
+                    buatTextFormField("Chip", controller.mapTextEditingController),
+                    buatTextFormField("Spiral", controller.mapTextEditingController),
+                    buatTextFormField("Shortcut", controller.mapTextEditingController),
                   ],
                 ),
                 Row(
                   children: [
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
-                        child: TextFormField(
-                          controller: controller.ngns_burryC,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: "Burry",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black), //<-- SEE HERE
-                            ),
-                          ),
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
-                        child: TextFormField(
-                          controller: controller.ngns_mprosesC,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: "M Prosses",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black), //<-- SEE HERE
-                            ),
-                          ),
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                    ),
+                    buatTextFormField("Burry", controller.mapTextEditingController),
+                    buatTextFormField("M Proses", controller.mapTextEditingController),
                   ],
                 ),
 
-                TextFormField(
-                  controller: controller.ngns_mproses_ketC,
-                  keyboardType: TextInputType.text,
-                  decoration: const InputDecoration(
-                    hintText: "Keterangan M Prosses",
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          width: 3, color: Colors.black),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          width: 3, color: Colors.black), //<-- SEE HERE
-                    ),
-                  ),
-                  textInputAction: TextInputAction.next,
-                ),
                 const SizedBox(height: 15),
 
                 Text("REJECT MATERIAL", style: GoogleFonts.roboto(
@@ -760,50 +514,8 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
 
                 Row(
                   children: [
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
-                        child: TextFormField(
-                          controller: controller.ngm_pinholeC,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: "Pin Hole",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black), //<-- SEE HERE
-                            ),
-                          ),
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
-                        child: TextFormField(
-                          controller: controller.ngm_bendingC,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: "Bending",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black), //<-- SEE HERE
-                            ),
-                          ),
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                    ),
+                    buatTextFormField("Pin Hole", controller.mapTextEditingController),
+                    buatTextFormField("Bending", controller.mapTextEditingController),
                   ],
                 ),
 
@@ -816,50 +528,8 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
 
                 Row(
                   children: [
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
-                        child: TextFormField(
-                          controller: controller.ngm_rustyC,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: "Rusty",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black), //<-- SEE HERE
-                            ),
-                          ),
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
-                        child: TextFormField(
-                          controller: controller.ngm_colourC,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: "Color",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Colors.black), //<-- SEE HERE
-                            ),
-                          ),
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                    ),
+                    buatTextFormField("Rusty", controller.mapTextEditingController),
+                    buatTextFormField("Color", controller.mapTextEditingController),
                   ],
                 ),
 
@@ -889,7 +559,12 @@ class RecordFinishGoodView extends GetView<RecordFinishGoodController> {
                     textInputAction: TextInputAction.next,
                   ),
                 ),
-                ElevatedButton(onPressed: () => controller.addFinishGood(),
+
+                SizedBox(height: 18),
+
+                ElevatedButton(
+                  onPressed: () =>
+                  controller.cekInputDanSubmit(),
                   child: const Text("Submit"),
                 )
               ],

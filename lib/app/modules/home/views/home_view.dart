@@ -36,7 +36,7 @@ class HomeView extends GetView<HomeController> {
                     color: colorPrimary,
                     child: Center(
                       child: Text(
-                        'Record Finish Good',
+                        'Form Finish Good',
                         style: TextStyle(
                           color: colorPrimaryText,
                           fontSize: 20,
@@ -48,6 +48,7 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
               GestureDetector(
+                onTap: () => Get.toNamed(Routes.VIEWRECORDFG),
                 child: SizedBox(
                   width: width,
                   height: height,
@@ -55,7 +56,7 @@ class HomeView extends GetView<HomeController> {
                     color: colorPrimary,
                     child: Center(
                       child: Text(
-                        'Record OQC Finish Good',
+                        'Record Finish Good',
                         style: TextStyle(
                           color: colorPrimaryText,
                           fontSize: 20,

@@ -4,6 +4,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/record_finish_good/bindings/record_finish_good_binding.dart';
 import '../modules/record_finish_good/views/record_finish_good_view.dart';
+import '../modules/viewrecordfg/bindings/viewrecordfg_binding.dart';
+import '../modules/viewrecordfg/views/viewrecordfg_view.dart';
 
 part 'app_routes.dart';
 
@@ -22,6 +24,11 @@ class AppPages {
       name: _Paths.RECORD_FINISH_GOOD,
       page: () => const RecordFinishGoodView(),
       binding: RecordFinishGoodBinding(),
+    ),
+    GetPage(
+      name: _Paths.VIEWRECORDFG,
+      page: () => const ViewrecordfgView(),
+      binding: ViewrecordfgBinding(),
     ),
   ];
 }
