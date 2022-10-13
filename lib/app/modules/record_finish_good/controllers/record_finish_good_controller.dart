@@ -43,7 +43,8 @@ class RecordFinishGoodController extends GetxController {
  String? shift;
  Map<String, TextEditingController> mapTextEditingController = {};
 
-var idtanggal = DateFormat("yyyy-MM-dd").format(DateTime.now());
+var idtanggal = DateFormat("yyyy-MM-dd").format(DateTime.now().subtract(const Duration(hours: 7)));
+// var idtanggal = DateFormat("yyyy-MM-dd").format(DateTime.now().subtract(const Duration(hours: 7)));
 
   CollectionReference koleksi = FirebaseFirestore.instance.collection("Finish Good");
 
@@ -252,6 +253,7 @@ var idtanggal = DateFormat("yyyy-MM-dd").format(DateTime.now());
   }
 
   void cekInputDanSubmit() {
+    idtanggal = DateFormat("yyyy-MM-dd").format(DateTime.now().subtract(const Duration(hours: 7)));
     try {
       var totalNG = 0;
       mapTextEditingController.forEach((key, value) {
