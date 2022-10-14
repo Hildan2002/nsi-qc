@@ -9,17 +9,18 @@ import '../controllers/viewrecordfg_controller.dart';
 
 class ViewrecordfgView extends GetView<ViewrecordfgController> {
   const ViewrecordfgView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(
+      appBar: AppBar(
         elevation: 0,
         backgroundColor: colorPrimaryDark,
         title: const Text('Record Finish Good'),
         centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: controller.recordfg,
+        stream: controller.recordfg.snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return Center(child: Text('Something went wrong'));
@@ -27,17 +28,19 @@ class ViewrecordfgView extends GetView<ViewrecordfgController> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return CircularProgressIndicator();
           }
-          if (snapshot.hasData ) {
+          if (snapshot.hasData) {
             return ScrollConfiguration(
               behavior: ScrollConfiguration.of(context).copyWith(dragDevices: {
-              PointerDeviceKind.touch,
-              PointerDeviceKind.mouse,
-            },),
+                PointerDeviceKind.touch,
+                PointerDeviceKind.mouse,
+              },),
               child: ListView.builder(
                 itemCount: snapshot.data!.docs.length,
                 itemBuilder: (context, index) {
-                  final DocumentSnapshot documentSnapshot = snapshot.data!.docs[index];
-                  var detail = documentSnapshot['detail'];
+                  final DocumentSnapshot documentSnapshot = snapshot.data!
+                      .docs[index];
+                  var snapshotControl = documentSnapshot;
+                  // controller.mapIsEditMode["${documentSnapshot["tanggal"]}@${documentSnapshot["nama_pic"]}"];
                   return Column(
                     children: [
                       Card(
@@ -46,16 +49,18 @@ class ViewrecordfgView extends GetView<ViewrecordfgController> {
                           title: Text(documentSnapshot['nama_pic']),
                           subtitle: Text(documentSnapshot['tanggal']),
                           children: <Widget>[
-                            Text(documentSnapshot['nama_pic']),
                             SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
-                              child: DataTable(
-                                border: TableBorder.all(),
-                                columnSpacing: Get.width / 115,
-                                dividerThickness: 2,
-                                columns: controller.kolomHeader(daftarKolom),
-                                rows: controller.rowEntri(detail)
-                              ),
+                              child: Obx(() {
+                                return DataTable(
+                                    border: TableBorder.all(),
+                                    columnSpacing: Get.width / 115,
+                                    dividerThickness: 2,
+                                    columns: controller.kolomHeader(
+                                        daftarKolom),
+                                    rows: controller.rowEntri(snapshotControl)
+                                );
+                              }),
                             )
                           ],
                         ),

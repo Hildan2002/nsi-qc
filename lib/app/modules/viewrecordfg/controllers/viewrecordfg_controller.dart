@@ -6,10 +6,13 @@ import 'package:qc_nis/app/constant/constant.dart';
 class ViewrecordfgController extends GetxController {
   //TODO: Implement ViewrecordfgController
 
-  Stream<QuerySnapshot> recordfg = FirebaseFirestore.instance.collection("Finish Good").snapshots();
+  CollectionReference<Map<String, dynamic>> recordfg = FirebaseFirestore.instance.collection("Finish Good");
+  RxBool isEditMode = false.obs;
 
-  bool? _isEditMode = false;
-
+  // Map<String, bool> mapIsEditMode = {};
+  List<String> listIdToggle = [];
+  List<RxBool> listBoolToggle = [];
+  List<Rx<TextEditingController>> listTextEditController = [];
 
   @override
   void onInit() {
@@ -26,14 +29,47 @@ class ViewrecordfgController extends GetxController {
     super.onClose();
   }
 
-  List<DataCell> kolomEntri(int columnHeaderCount, List rowColumn, List detailModel, int rowIndex) {
+  List<DataCell> kolomEntri(int columnHeaderCount, List rowColumn, DocumentSnapshot snapshot, int rowIndex) {
     List<DataCell> a = [];
-    a.add(DataCell(Center(child: Text("${rowIndex+1}"))));
+    for (var i = 0; i < rowColumn.length; i++){
+      listTextEditController.add(TextEditingController(text:snapshot['detail'][rowIndex][rowColumn[i]]).obs);
+    }
+    a.add(DataCell(Center(child: Row(
+      children: [
+        Switch(
+            value: listBoolToggle[listIdToggle.indexOf("${snapshot["tanggal"]}@${snapshot["nama_pic"]} $rowIndex")].value,
+            onChanged: (value) {
+              listBoolToggle[listIdToggle.indexOf("${snapshot["tanggal"]}@${snapshot["nama_pic"]} $rowIndex")].value = value;
+              if (!value){
+                Get.snackbar("${listTextEditController[3].value.text}", "${snapshot["detail"][rowIndex][rowColumn[3]]}");
+                listTextEditController.clear();
+                // for (var i = 0; i < rowColumn.length; i++){
+                //   listTextEditController[i].value.dispose();
+                // }
+              }
+              else {
+                for (var i = 0; i < rowColumn.length; i++){
+                  listTextEditController[i] = TextEditingController(text: "${snapshot['detail'][rowIndex][rowColumn[i]] }").obs;
+                }
+              }
+            }),
+        Text("${rowIndex+1}"),
+      ],
+    ))));
     for (var i = 1; i < columnHeaderCount; i++){
       a.add(
           DataCell(
               Center(
-                child: Text(detailModel[rowIndex][rowColumn[i]]),
+                child: (
+                    // isEditMode.value //&& mapIsEditMode["${snapshot["tanggal"]}@${snapshot["nama_pic"]} $rowIndex"] != null)
+                    listBoolToggle[listIdToggle.indexOf("${snapshot["tanggal"]}@${snapshot["nama_pic"]} $rowIndex")].value
+                    // ? (mapIsEditMode["${snapshot["tanggal"]}@${snapshot["nama_pic"]} $rowIndex"]!
+                    ? TextFormField(
+                      controller: listTextEditController[i].value,
+                      // initialValue: snapshot['detail'][rowIndex][rowColumn[i]],
+                      style: const TextStyle(fontSize: 14, color: colorPrimary))
+                    : Text(snapshot['detail'][rowIndex][rowColumn[i]]))
+                    // : Text(snapshot['detail'][rowIndex][rowColumn[i]]),
               )
           )
       );
@@ -41,10 +77,14 @@ class ViewrecordfgController extends GetxController {
     return a;
   }
 
-  List<DataRow> rowEntri(List snapshotDetail) {
+  List<DataRow> rowEntri(DocumentSnapshot snapshot) {
     List<DataRow> a = [];
-    for (var i = 0; i < snapshotDetail.length; i++){
-      a.add(DataRow(cells: kolomEntri(daftarKolom.length, daftarKolomRow, snapshotDetail, i)));
+    for (var i = 0; i < snapshot['detail'].length; i++){
+      // mapIsEditMode["${snapshot["tanggal"]}@${snapshot["nama_pic"]} $i"] = false;
+      listIdToggle.add("${snapshot["tanggal"]}@${snapshot["nama_pic"]} $i");
+      listBoolToggle.add(false.obs);
+
+      a.add(DataRow(cells: kolomEntri(daftarKolom.length, daftarKolomRow, snapshot, i)));
     }
     return a;
   }
@@ -65,5 +105,9 @@ class ViewrecordfgController extends GetxController {
       );
     }
     return a;
+  }
+
+  void editData(int rowIndex) {
+
   }
 }
